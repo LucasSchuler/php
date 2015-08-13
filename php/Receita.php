@@ -11,35 +11,35 @@ class Receita {
     
     function __construct($n,$img,$ing,$prep,$rend,$temp,$s) 
     { 
-       $nome = $n;
-       $imagem = $img;
-       $ingredientes = $ing;
-       $preparo = $prep;
-       $rendimento = $rend;
-       $tempo = $temp;
-       $site = $s;
+       $this->nome = $n;
+       $this->imagem = $img;
+       $this->ingredientes = $ing;
+       $this->preparo = $prep;
+       $this->rendimento = $rend;
+       $this->tempo = $temp;
+       $this->site = $s;
     } 
     
     public function getNome(){ 
-        return nome;
+        return $this->nome;
     }
     public function getImagem(){ 
-        return imagem;
+        return $this->imagem;
     }
     public function getIngredientes(){  
-        return ingredientes;
+        return $this->ingredientes;
     }
     public function getPreparo(){ 
-        return preparo;
+        return $this->preparo;
     }
     public function getRendimento(){     
-        return rendimento;
+        return $this->rendimento;
     }
     public function getTempo(){  
-        return tempo;
+        return $this->tempo;
     }
     public function getSite(){     
-        return site;
+        return $this->site;
     }
     
 }

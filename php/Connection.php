@@ -3,37 +3,31 @@ include_once 'Receita.php';
 
 class Connection { 
     
-    private $connect;
-    
     public function Connect(){ 
-        $host = "sql3.freesqldatabase.com:3306/sql386745";
-        $user = "sql386745";
-        $pass = "fN3*tG3*";
-        $database = "sql386745";
-
-        $connect = mysql_connect($host, $user, $pass);
-        if ($connect) {
-            $buka = mysql_select_db ($database);
-        if (!$buka) {
-            die ("Database tidak dapat dibuka");
+        $link = mysqli_connect("sql3.freesqldatabase.com", "sql386745", "fN3*tG3*", "sql386745");
+        // Check connection
+        if($link === false){
+            die("ERROR: Could not connect. " . mysqli_connect_error());
         }
-        } else {
-            die ("Server MySQL tidak terhubung");       
-        }
+        return $link;
     }
     
-    public function save($receita){
-        $sql = "insert into receita("
-         . "nome, imagem, ingredientes,preparo,rendimento,tempo,site" 
-         . " ) VALUES (" 
-         . "'" . $receita . "',"
-         . "'" . $lastname . "',"
-         . "'" . $gender . "',"
-         . "'" . $gender . "',"
-         . "'" . $gender . "',"
-         . "'" . $gender . "',"
-         . "'" . $Console .")";
-
-    $connect->query($sql);
+    public function save($receita){        
+        if($receita instanceOf Receita){
+            $link=$this->Connect();
+            $sql = "INSERT INTO receita (nome, imagem, ingredientes,preparo,rendimento,tempo) "
+            . "VALUES ('".$receita->getNome()."', '".$receita->getImagem()."', '".$receita->getIngredientes()."','".$receita->getPreparo()."','".$receita->getRendimento()."','".$receita->getTempo()."')";
+        
+            
+            if(mysqli_query($link, $sql)){
+                echo "Records added successfully.";
+            } else{
+                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+            }
+ 
+// Close connection
+//mysqli_close($link);
+        
+        }
     }
 }

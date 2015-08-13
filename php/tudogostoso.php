@@ -8,22 +8,7 @@ class tudogostoso {
         foreach ($array as &$value) {
             $html = file_get_html($value);
 
-            //---------------------
-//            $doc = new DOMDocument();
-//            @$doc->loadHTML($html);
-//            $xpath = new DOMXPath($doc);
-//            $imageTags = $doc->getElementsByTagName('img');
-//            $array2 = array();
-//            $count = 0;
-//            foreach($imageTags as $tag) {
-//                $array2[$count] = $tag->getAttribute('src');       
-//                 $count++;
-//            }
-//            //echo $array[9]; 
-//            $image = $array2[9];
-//            echo $image;
-            
-            //--------------------
+            $image = "imagem";
 
             $name = $html->find("span.current",0);
             echo $name;
@@ -48,8 +33,8 @@ class tudogostoso {
             
             $site="www.tudogostoso.com.br";
             $receita = new Receita($name,$image,$recipelist,$IntructionsRecipelist,$rendimento,$tempPreparo,$site);
-            
             $connection = new Connection();
+            //$connection->Connect();
             $connection->save($receita);   
         } 
     }
