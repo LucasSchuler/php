@@ -1,6 +1,6 @@
 <?php
 
-include ('connection.php');
+include ('Connection.php');
 
 $a = new Connection();
 
@@ -16,7 +16,6 @@ $sql = "SELECT * FROM $table";
 //if(!$result){
 //    die("Error retrieving scores".mysql_error());
 //}
-
 
 if ($result = mysqli_query($link, $sql))
 {
