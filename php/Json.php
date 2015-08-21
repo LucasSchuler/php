@@ -17,6 +17,7 @@ $sql = "SELECT * FROM $table";
 //    die("Error retrieving scores".mysql_error());
 //}
 
+
 if ($result = mysqli_query($link, $sql))
 {
 	// If so, then create a results array and a temporary one

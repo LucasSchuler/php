@@ -26,10 +26,28 @@ class Connection {
             }
 // Close connection
 //mysqli_close($link);
-        
-            
-            
-            
         }
     }
+    
+    public function saveUsuario($usuario){
+        
+        if($usuario instanceOf Usuario){ 
+            $link=$this->Connect();
+            $sql = "INSERT INTO usuario (nome) "
+            . "VALUES ('".$usuario->getNome()."')";
+        
+            
+            if(mysqli_query($link, $sql)){
+                echo "Records added successfully.";
+            } else{
+                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+            }
+        
+        
+        } 
+    }
+            
+            
+        
+    
 }

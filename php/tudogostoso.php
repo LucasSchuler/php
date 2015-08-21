@@ -1,6 +1,6 @@
 <?php
-include_once 'Connection.php';
-include_once 'Receita.php';
+    include_once 'Connection.php';
+    include_once 'Receita.php';
 
 class tudogostoso { 
     public function analisatudogostoso($array){ 
