@@ -83,9 +83,9 @@ class tudogostoso {
             echo $idRecipe;
 
 
-            $recipelist1 = $html->find('div.recipelist', 0);
-            $recipelist = \strip_tags($recipelist1);
-            echo $recipelist1;
+           // $recipelist1 = $html->find('div.recipelist', 0);
+           // $recipelist = \strip_tags($recipelist1);
+           // echo $recipelist1;
        
               $recipelist = $html->find('div.recipelist', 0);
               $arrayIngredients=explode("<span>",$recipelist);
@@ -125,7 +125,7 @@ class tudogostoso {
             echo $tempPreparo1;
             
             $site="www.tudogostoso.com.br";
-           $receita = new Receita($idRecipe,$name,$image,$recipelist,$IntructionsRecipelist,$porcao,$tempPreparo,$site,$idCategoria);
+           $receita = new Receita($idRecipe,$name,$image,$arrayIngredients,$arrayIntructions,$porcao,$tempPreparo,$site,$idCategoria);
             $connection = new Connection();
             //$connection->Connect();
             $connection->save($receita);   

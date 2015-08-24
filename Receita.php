@@ -21,6 +21,7 @@ class Receita {
        $this->rendimento = $rend;
        $this->tempo = $temp;
        $this->site = $s;
+       $this->idCategoria = $idCategoria;
     } 
     
     public function getId(){ 
@@ -33,10 +34,28 @@ class Receita {
         return $this->imagem;
     }
     public function getIngredientes(){  
-        return $this->ingredientes;
+        
+        //$ingString;
+        $n_palavras=count($this->ingredientes);
+              for($i=0 ; $i < $n_palavras ; $i++ ){
+                $ingString = $this->ingredientes[$i].$ingString." * " ;
+              }
+        
+        return $ingString;
+        //return $this->ingredientes;
     }
     public function getPreparo(){ 
-        return $this->preparo;
+        
+        
+        //$IntrucString;
+        $n_palavras1=count($this->preparo);
+              for($i=0 ; $i < $n_palavras1 ; $i++ ){
+                $IntrucString = $this->preparo[$i].$IntrucString." * " ;
+              }
+        
+        return $IntrucString;
+        
+        //return $this->preparo;
     }
     public function getRendimento(){     
         return $this->rendimento;
