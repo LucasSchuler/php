@@ -9,8 +9,9 @@ class Receita {
     private $tempo;
     private $site;
     private $id;
+    private $idCategoria;
     
-    function __construct($id,$n,$img,$ing,$prep,$rend,$temp,$s) 
+    function __construct($id,$n,$img,$ing,$prep,$rend,$temp,$s,$idCategoria) 
     { 
        $this->id = $id; 
        $this->nome = $n;
@@ -45,6 +46,9 @@ class Receita {
     }
     public function getSite(){     
         return $this->site;
+    }
+    public function getIdCategoria(){
+        return $this->idCategoria;
     }
     
 }

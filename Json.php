@@ -8,7 +8,7 @@ $link = $a->Connect();
 
 $table = "receita";
 
-$sql = "SELECT * FROM $table";
+$sql = "SELECT id_site,nome,imagem,ingredientes,preparo,tempo,rendimento FROM $table";
         
 //$result = mysqli_query($link, $sql);
 
