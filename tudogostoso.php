@@ -1,9 +1,62 @@
+
 <?php
     include_once 'Connection.php';
     include_once 'Receita.php';
 
 class tudogostoso { 
-    public function analisatudogostoso($array){ 
+
+	    function __construct() 
+    { 
+      // $this->buscaCarnes();
+         $this->buscaSopas();
+    } 
+    
+    public function buscaCarnes(){
+        $meuArray = array();
+        $cont = 0;
+        $aux=1;
+        for($i =1; $i <= 3; $i++){      
+            $path='http://www.tudogostoso.com.br/categorias/1004-carnes-'.$i.'.html';
+            $html = file_get_contents($path);   
+            $dom = new DOMDocument();   
+            @$dom->loadHTML($html);    
+            $xpath = new DOMXPath($dom);        
+            foreach ($xpath->query('//a[contains(@href, "receita/")]') as $a) {
+                if($aux==11){echo("a");$aux=1;}
+                else{
+                $meuArray[$cont] = 'http://www.tudogostoso.com.br/'.$a->getAttribute('href');
+                $cont++; 
+                $aux++;
+                }
+            }
+        }  
+        $this->analisatudogostoso($meuArray,1);
+    }
+    
+    public function buscaSopas(){
+        $meuArray = array();
+        $cont = 0;
+        $aux=1;
+        for($i =1; $i <= 1; $i++){      
+            $path='http://www.tudogostoso.com.br/categorias/1027-sopas-'.$i.'.html';
+            $html = file_get_contents($path);   
+            $dom = new DOMDocument();   
+            @$dom->loadHTML($html);    
+            $xpath = new DOMXPath($dom);        
+            foreach ($xpath->query('//a[contains(@href, "receita/")]') as $a) {
+                if($aux==11){echo("a");$aux=1;}
+                else{
+                $meuArray[$cont] = 'http://www.tudogostoso.com.br/'.$a->getAttribute('href');
+                $cont++; 
+                $aux++;
+                }
+            }
+        }  
+        $this->analisatudogostoso($meuArray,3);
+    }
+
+
+    public function analisatudogostoso($array,$idCategoria){ 
 
         foreach ($array as &$value) {
             $html = file_get_html($value);
@@ -24,6 +77,11 @@ class tudogostoso {
             $name = \strip_tags($name1);
             echo ($name1);
             
+
+	  $idRecipe1 = $html->find('*[class="tdg-bt round orange recipebook"]', 0);
+            $idRecipe = $idRecipe1->getAttribute('data-recipe-id');
+            echo $idRecipe;
+
 
             $recipelist1 = $html->find('div.recipelist', 0);
             $recipelist = \strip_tags($recipelist1);
@@ -67,7 +125,7 @@ class tudogostoso {
             echo $tempPreparo1;
             
             $site="www.tudogostoso.com.br";
-            $receita = new Receita($name,$image,$arrayIngredients,$arrayIntructions,$porcao,$tempPreparo,$site);
+           $receita = new Receita($idRecipe,$name,$image,$recipelist,$IntructionsRecipelist,$porcao,$tempPreparo,$site,$idCategoria);
             $connection = new Connection();
             //$connection->Connect();
             $connection->save($receita);   
