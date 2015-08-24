@@ -8,7 +8,8 @@ class tudogostoso {
 	    function __construct() 
     { 
       // $this->buscaCarnes();
-         $this->buscaSopas();
+      //   $this->buscaSopas();
+        $this->buscaMassas();          
     } 
     
     public function buscaCarnes(){
@@ -33,11 +34,33 @@ class tudogostoso {
         $this->analisatudogostoso($meuArray,1);
     }
     
+       public function buscaMassas(){
+        $meuArray = array();
+        $cont = 0;
+        $aux=1;
+        for($i =2; $i <= 2; $i++){      
+            $path='http://www.tudogostoso.com.br/categorias/1028-massas-'.$i.'.html';
+            $html = file_get_contents($path);   
+            $dom = new DOMDocument();   
+            @$dom->loadHTML($html);    
+            $xpath = new DOMXPath($dom);        
+            foreach ($xpath->query('//a[contains(@href, "receita/")]') as $a) {
+                if($aux==11){echo("a");$aux=1;}
+                else{
+                $meuArray[$cont] = 'http://www.tudogostoso.com.br/'.$a->getAttribute('href');
+                $cont++; 
+                $aux++;
+                }
+            }
+        }  
+        $this->analisatudogostoso($meuArray,2);
+    }
+    
     public function buscaSopas(){
         $meuArray = array();
         $cont = 0;
         $aux=1;
-        for($i =1; $i <= 1; $i++){      
+        for($i = 1; $i <= 1; $i++){      
             $path='http://www.tudogostoso.com.br/categorias/1027-sopas-'.$i.'.html';
             $html = file_get_contents($path);   
             $dom = new DOMDocument();   
@@ -54,7 +77,6 @@ class tudogostoso {
         }  
         $this->analisatudogostoso($meuArray,3);
     }
-
 
     public function analisatudogostoso($array,$idCategoria){ 
 
