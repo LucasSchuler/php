@@ -27,6 +27,7 @@ class Receita {
         return $this->imagem;
     }
     public function getIngredientes(){  
+        
         return $this->ingredientes;
     }
     public function getPreparo(){ 
