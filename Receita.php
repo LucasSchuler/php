@@ -8,12 +8,9 @@ class Receita {
     private $rendimento;
     private $tempo;
     private $site;
-    private $id;
-    private $idCategoria;
     
-    function __construct($id,$n,$img,$ing,$prep,$rend,$temp,$s,$idCategoria) 
+    function __construct($n,$img,$ing,$prep,$rend,$temp,$s) 
     { 
-       $this->id = $id; 
        $this->nome = $n;
        $this->imagem = $img;
        $this->ingredientes = $ing;
@@ -23,9 +20,6 @@ class Receita {
        $this->site = $s;
     } 
     
-    public function getId(){ 
-        return $this->id;
-    }
     public function getNome(){ 
         return $this->nome;
     }
@@ -33,6 +27,7 @@ class Receita {
         return $this->imagem;
     }
     public function getIngredientes(){  
+        
         return $this->ingredientes;
     }
     public function getPreparo(){ 
@@ -46,9 +41,6 @@ class Receita {
     }
     public function getSite(){     
         return $this->site;
-    }
-    public function getIdCategoria(){
-        return $this->idCategoria;
     }
     
 }
