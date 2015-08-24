@@ -21,6 +21,7 @@ class Receita {
        $this->rendimento = $rend;
        $this->tempo = $temp;
        $this->site = $s;
+       $this->idCategoria = $idCategoria;
     } 
     
     public function getId(){ 
