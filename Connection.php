@@ -16,9 +16,9 @@ class Connection {
         if($receita instanceOf Receita){ 
             $link=$this->Connect();
             $sql = "INSERT INTO receita (idReceita,nome, imagem, ingredientes,preparo,rendimento,tempo,idCategoria) "
-            . "VALUES ('".$receita->getId()."','".$receita->getNome()."', '".$receita->getImagem()."', '".$receita->getIngredientes()."','".$receita->getPreparo()."','".$receita->getRendimento()."','".$receita->getTempo()."',1)";
+            . "VALUES ('".$receita->getId()."','".$receita->getNome()."', '".$receita->getImagem()."', '".$receita->getIngredientes()."','".$receita->getPreparo()."','".$receita->getRendimento()."','".$receita->getTempo()."',1) "
+                    . "on duplicate key update idReceita = '".$receita->getId()."'";
         
-            
             if(mysqli_query($link, $sql)){
                 echo "Records added successfully.";
             } else{
