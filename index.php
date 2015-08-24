@@ -7,4 +7,5 @@ include_once 'tudogostoso.php';
 include("simple_html_dom.php");
 
 $tudogostoso = new tudogostoso();
+
 ?>
