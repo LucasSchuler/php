@@ -34,16 +34,56 @@ class Receita {
         return $this->imagem;
     }
     public function getIngredientes(){  
-        return $this->ingredientes;
+        
+        $ingString="";
+        $n_palavras=count($this->ingredientes);
+              for($i=0 ; $i < $n_palavras ; $i++ ){
+                $ingString = $ingString.$this->ingredientes[$i]." * " ;
+              }
+        
+        return $ingString;
+        //return $this->ingredientes;
     }
     public function getPreparo(){ 
-        return $this->preparo;
+        
+      
+        $IntrucString= "";
+        $n_palavras1=count($this->preparo);
+              for($i=0 ; $i < $n_palavras1 ; $i++ ){
+                $IntrucString =$IntrucString.$this->preparo[$i]." * " ;
+              }
+        
+        return $IntrucString;
+        
+        //return $this->preparo;
     }
-    public function getRendimento(){     
-        return $this->rendimento;
+    public function getRendimento(){ 
+        
+        $porcao = explode(" ", $this->rendimento);
+        
+        return (int)$porcao[1];
     }
-    public function getTempo(){  
-        return $this->tempo;
+    public function getTempo(){ 
+        
+        $veri = strripos($this->tempo, 'h');
+        $int;
+        
+        if($veri===false){
+            $time = explode("min", $this->tempo);
+            $int = $time[0];
+            echo $time[0];
+        }
+        
+        else{
+            $hora = explode("h", $this->tempo);
+            $time = explode("min", $hora[1]);
+            
+            $int = ((int)$hora[0]*60)+ (int)$time[0];   
+        }
+        
+        //echo $int;
+
+        return $int;
     }
     public function getSite(){     
         return $this->site;
