@@ -85,9 +85,12 @@ class tudogostoso {
 //
 //            echo '<br />';
 //            
-//              $url = "http://www.tudogostoso.com.br/receita/174237-waffles-belgas.html";
+            //$url = "http://www.tudogostoso.com.br/receita/130226-bacalhau-ao-forno.html";
+//             
 //
-//              $html = file_get_html($url);    
+                
+              //$url = "http://www.tudogostoso.com.br/receita/170477-carne-de-sol-com-creme-de-leite.html";
+              //$html = file_get_html($url);    
 //            
             $imageurl = $html->find('*[class="pic"]', 0);
             $image = $imageurl->getAttribute('src');
@@ -114,7 +117,7 @@ class tudogostoso {
               $n_palavras=count($arrayIngredients);
               for($i=0 ; $i < $n_palavras ; $i++ ){
                 $arrayIngredients[$i] = \strip_tags($arrayIngredients[$i]);
-                echo $arrayIngredients[$i];
+                //echo $arrayIngredients[$i];
                 echo '<br />';
               }
         
@@ -124,7 +127,7 @@ class tudogostoso {
             $n_palavras1=count($arrayIntructions);
             for($i=0 ; $i < $n_palavras1 ; $i++ ){
                 $arrayIntructions[$i] = \strip_tags($arrayIntructions[$i]);
-                echo $arrayIntructions[$i];
+                //echo $arrayIntructions[$i];
                 echo '<br />';
               }
             
@@ -136,7 +139,7 @@ class tudogostoso {
 
             $porcao1 = $html->find('*[class="num yield"]',0);
             $porcao = \strip_tags($porcao1);
-            echo $porcao1;
+            //echo $porcao1;
 
 //            $tempPreparoTitle1 = $html->find("span.label",0);
 //            $tempPreparoTitle = \strip_tags($tempPreparoTitle1);
@@ -144,7 +147,7 @@ class tudogostoso {
 
             $tempPreparo1 = $html->find('*[class="num preptime"]',0);
             $tempPreparo = \strip_tags($tempPreparo1);
-            echo $tempPreparo1;
+            //echo $tempPreparo1;
             
             $site="www.tudogostoso.com.br";
            $receita = new Receita($idRecipe,$name,$image,$arrayIngredients,$arrayIntructions,$porcao,$tempPreparo,$site,$idCategoria);
