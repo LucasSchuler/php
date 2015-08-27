@@ -10,6 +10,14 @@ include_once 'Usuario.php';
             
  
             $name = $_POST['name'];
+
+             //$title = $_POST['title'];
+             //$description = $_POST['description'];
+             //$city = $_POST['city'];
+
+            // echo "Title: ". $title;
+            // echo "Description: ". $description;
+            // echo "City: ". $city;
             
             echo $name;
 
