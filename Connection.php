@@ -4,7 +4,7 @@ include_once 'Receita.php';
 class Connection { 
     
     public function Connect(){ 
-        $link = mysqli_connect("sql3.freemysqlhosting.net", "sql387426", "cV1%rM1*", "sql387426");
+        $link = mysqli_connect("sql3.freemysqlhosting.net", "sql388062", "eA8%vH1%", "sql388062");
         // Check connection
         if($link === false){
             die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -25,7 +25,7 @@ class Connection {
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
             }
 // Close connection
-//mysqli_close($link);
+           mysqli_close($link);
         }
     }
     
