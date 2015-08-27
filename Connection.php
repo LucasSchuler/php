@@ -25,7 +25,7 @@ class Connection {
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
             }
 // Close connection
-           mysqli_close($link);
+            mysqli_close($link);
         }
     }
     

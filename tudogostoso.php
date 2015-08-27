@@ -117,6 +117,9 @@ class tudogostoso {
                 echo $arrayIngredients[$i];
                 echo '<br />';
               }
+              if($arrayIngredients[0]==""){
+                 unset($arrayIngredients[0]);
+             }
         
 
             $IntructionsRecipelist1 = $html->find('*[class="recipelist instructions"]', 0);
@@ -126,7 +129,12 @@ class tudogostoso {
                 $arrayIntructions[$i] = \strip_tags($arrayIntructions[$i]);
                 echo $arrayIntructions[$i];
                 echo '<br />';
-              }
+             }
+             if($arrayIntructions[0]==""){
+                 unset($arrayIntructions[0]);
+             }
+             
+             
             
             
             
