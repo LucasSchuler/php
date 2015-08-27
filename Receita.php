@@ -52,6 +52,7 @@ class Receita {
               for($i=0 ; $i < $n_palavras1 ; $i++ ){
                 $IntrucString =$IntrucString.$this->preparo[$i]." * " ;
               }
+         
         
         return $IntrucString;
         
