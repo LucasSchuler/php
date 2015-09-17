@@ -8,12 +8,9 @@ class Refeicoes {
     private $lanches;
     private $sobremesas;
     private $bebidas;
-    private $assados;
-    private $grelhados;
-    private $refogados;
     private $molhos;
      
-    function __construct($idRefeicoes,$massas,$sopas,$bolos,$lanches,$sobremesas,$bebidas,$assados,$grelhados,$refogados,$molhos) 
+    function __construct($idRefeicoes,$massas,$sopas,$bolos,$lanches,$sobremesas,$bebidas,$molhos) 
     { 
        $this->idRefeicoes = $idRefeicoes;
        $this->massas = $massas;
@@ -21,10 +18,7 @@ class Refeicoes {
        $this->bolos = $bolos;
        $this->lanches = $lanches;
        $this->sobremesas = $sobremesas;
-       $this->bebidas = $bebidas;
-       $this->assados = $assados;
-       $this->grelhados = $grelhados;
-       $this->refogados = $refogados;
+       $this->bebidas = $bebidas;       
        $this->molhos = $molhos;
     }
     
@@ -49,15 +43,6 @@ class Refeicoes {
      public function getBebidas(){ 
         return $this->bebidas;
     } 
-     public function getAssados(){ 
-        return $this->assados;
-    } 
-    public function getGrelhados(){ 
-        return $this->grelhados;
-    } 
-     public function getRefogados(){ 
-        return $this->refogados;
-    }
      public function getMolhos(){ 
         return $this->molhos;
     }    

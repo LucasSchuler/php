@@ -28,10 +28,9 @@ class Connection {
     
     public function save($arrayReceitasSalvar){  
         $sql = "INSERT INTO receita (idReceita,nome, imagem, ingredientes,preparo,rendimento,tempo,idCategoria) VALUES ";
+                      $link=$this->Connect();
         foreach ($arrayReceitasSalvar as &$receita) {
             if($receita instanceOf Receita){ 
-               
-                $link=$this->Connect();
                  $sql = $sql." ('".$receita->getId()."','".$receita->getNome()."', '".$receita->getImagem()."', '".$receita->getIngredientes()."','".$receita->getPreparo()."','".$receita->getRendimento()."','".$receita->getTempo()."','".$receita->getIdCategoria()."'),";   
             }
         }
@@ -53,11 +52,11 @@ class Connection {
             $this->saveRefeicoes($usuario->getRefeicoes());
             
             $link=$this->Connect();
-            $sql = "INSERT INTO usuario (nome) "
-            . "VALUES ('".$usuario->getNome()."')";
+            $sql = "INSERT INTO usuario (nome,isVegan,idCarnes,idIngredientes,idRefeicoes) "
+            . "VALUES ('".$usuario->getNome()."','".$usuario->isVegan()."',(select max(idCarnes) from carnes),(select max(idIngredientes) from ingredientes),(select max(idRefeicoes) from refeicoes))";
         
             if(mysqli_query($link, $sql)){
-                echo "Records added successfully.";
+                echo "User added successfully.";
             } else{
                 echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
             }

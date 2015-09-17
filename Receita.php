@@ -10,8 +10,9 @@ class Receita {
     private $site;
     private $id;
     private $idCategoria;
+    private $subCat;
     
-    function __construct($id,$n,$img,$ing,$prep,$rend,$temp,$s,$idCategoria) 
+    function __construct($id,$n,$img,$ing,$prep,$rend,$temp,$s,$idCategoria,$subCat) 
     { 
        $this->id = $id; 
        $this->nome = $n;
@@ -22,6 +23,7 @@ class Receita {
        $this->tempo = $temp;
        $this->site = $s;
        $this->idCategoria = $idCategoria;
+       $this->subCat = $subCat;
     } 
     
     public function getId(){ 
@@ -131,5 +133,9 @@ class Receita {
     
     public function getIdCategoria(){
         return $this->idCategoria;
+    }
+    
+    public function getSubCat(){
+        return $this->subCat;
     }
 }
